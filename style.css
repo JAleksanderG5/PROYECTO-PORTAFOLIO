@@ -1,0 +1,229 @@
+/**** Custom Properties ****/
+:root {
+  --color-principal: #fd5400;
+  --color-secundario: #caebf2;
+  --color-alfa-secundario: rgba(202, 235, 242, 0.85);
+  --color-alfa-negro: rgba(0, 0, 0, 0.5);
+  --color-azul-obscuro: #1d2731;
+  --color-gris-icon: #a9a9a9;
+  --color-gris-claro: #efefef;
+  --color-footer: #23b4e9;
+  --color-texto: #222;
+  --color-titulo: #fff;
+  --fuente: "Nunito Sans", sans-serif;
+  --fuente-titulo: "Alegreya Sans", sans-serif;
+  /*Utopia-textos fluidos*/
+  --step--2: clamp(0.91rem, calc(0.89rem + 0.1vw), 0.96rem);
+  --step--1: clamp(1.09rem, calc(1.05rem + 0.21vw), 1.2rem);
+  --step-0: clamp(1.31rem, calc(1.24rem + 0.37vw), 1.5rem);
+  --step-1: clamp(1.58rem, calc(1.46rem + 0.59vw), 1.88rem);
+  --step-2: clamp(1.89rem, calc(1.71rem + 0.89vw), 2.34rem);
+  --step-3: clamp(2.27rem, calc(2.01rem + 1.29vw), 2.93rem);
+  --step-4: clamp(2.72rem, calc(2.36rem + 1.83vw), 3.66rem);
+  --step-5: clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem);
+  --max-width: 1200px;
+  --header-height: 4rem;
+}
+
+/**** Reseteo ****/
+
+html {
+  box-sizing: border-box;
+  font-family: var(--fuente);
+  font-size: 16px;
+  /* scroll-behavior: smooth; */
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--text-color);
+}
+
+a {
+  transition: all 0.5s ease-in-out;
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+h1 {
+  margin: 0;
+  font-size: var(--step-5);
+}
+h2 {
+  margin: 0;
+  font-size: var(--step-4);
+}
+h3 {
+  margin: 0;
+  font-size: var(--step-3);
+}
+h4 {
+  margin: 0;
+  font-size: var(--step-2);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/**** Componentes ****/
+/*Cabecera*/
+.menu {
+  position: fixed;
+  left: 0;
+  bottom: var(--header-height);
+  width: 100%;
+  background-color: var(--color-azul-obscuro);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.menu.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-btn {
+  outline: thin solid var(--color-principal);
+  border: 0;
+  cursor: pointer;
+  background-color: var(--color-azul-obscuro);
+}
+
+.menu-btn svg {
+  fill: var(--color-principal);
+}
+
+.menu a {
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--color-gris-claro);
+}
+
+.menu a:hover {
+  color: var(--color-principal);
+}
+
+@media screen and (min-width: 1024px) {
+  /*header*/
+  .menu-btn {
+    display: none;
+  }
+
+  .menu {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    width: auto;
+    flex-direction: row;
+  }
+
+  .menu a {
+    padding: 0 1rem;
+  }
+
+  .menu a:last-child {
+    padding-right: 0;
+  }
+  /*inicio*/
+}
+
+/*Hero image*/
+.hero-image-content img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.hero-image {
+  background-image: var(--hero-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: var(--hero-attachment);
+}
+
+.hero-image-opacity {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-alfa-negro);
+}
+
+.hero-image-content h1 {
+  font-family: var(--fuente-titulo);
+  color: var(--color-titulo);
+}
+
+.hero-image-content h4 {
+  margin-top: 1rem;
+  color: var(--color-secundario);
+}
+/**** Utilidades ****/
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--max-width);
+}
+
+.none {
+  display: none;
+}
+
+/**** Estilos de sitio ****/
+/*Cabecera*/
+.header {
+  position: fixed;
+  padding: 1rem;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--color-azul-obscuro);
+}
+
+.header > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  color: var(--color-principal);
+  font-weight: bold;
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    position: sticky;
+    top: 0;
+    padding: 0.5rem;
+    height: calc(var(--header-height)-0.5rem);
+  }
+}
