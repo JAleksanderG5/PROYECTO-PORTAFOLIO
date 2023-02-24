@@ -74,6 +74,10 @@ h5 {
   margin: 0;
   font-size: var(--step-1);
 }
+h6 {
+  margin: 0;
+  font-size: var(--step--2);
+}
 
 img {
   max-width: 100%;
@@ -149,12 +153,11 @@ p {
   .menu a:last-child {
     padding-right: 0;
   }
-  /*inicio*/
 }
 
 /*Hero image*/
 .hero-image-content img {
-  max-width: 200px;
+  max-width: 250px;
   height: auto;
   border-radius: 50%;
 }
@@ -208,7 +211,58 @@ p {
   }
 }
 
+/*Modal*/
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-alfa-negro);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s;
+}
+
+.modal-content {
+  position: relative;
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.modal-cerrar svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: var(--color-principal);
+}
+
+.modal[id|="trabajo"]:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /**** Utilidades ****/
+.btn {
+  display: block;
+  border-radius: 1rem;
+  width: 125px;
+  padding: 0.25rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-titulo);
+  background-color: var(--color-principal);
+  border: 1px solid var(--color-principal);
+}
+
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -220,13 +274,13 @@ p {
 }
 
 .section {
-  padding: 2rem 1rem;
+  padding: 1rem 1rem 2rem 1rem;
 }
 
 .section-title {
   margin: 2rem auto;
   border-bottom: 3px solid var(--color-principal);
-  width: 250px;
+  width: 200px;
   text-align: center;
   padding: 0.5rem 1rem;
 }
@@ -296,9 +350,118 @@ p {
   justify-content: center;
 }
 
+/*Proyectos*/
+/*Cards*/
+.portafolio {
+  background-color: var(--color-gris-claro);
+}
+
+.portafolio-content {
+  margin-bottom: 2rem;
+}
+
+.portafolio-card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.portafolio-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.75s;
+}
+
+.portafolio-card-info svg {
+  display: block;
+}
+
+.portafolio-card-info p {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.portafolio-card-info h5 {
+  margin: 0;
+}
+
+.portafolio-card-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-alfa-secundario);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out, transform 1s linear 250ms;
+}
+
+.portafolio-card:hover .portafolio-card-info {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.portafolio-card:hover img {
+  transform: rotate(15deg) scale(2, 2);
+}
+
+.portafolio-card-info .btn:hover {
+  opacity: 0.85;
+}
+
+/*Modal*/
+.portafolio-modal {
+  padding: 1rem;
+  max-width: 400px;
+  display: grid;
+  grid-template-columns: 100%;
+  background-color: #fff;
+}
+
+.portafolio-modal-detalles {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-auto-rows: 2rem;
+}
+
+.portafolio-modal-detalles b {
+  color: var(--color-principal);
+}
+
 @media screen and (min-width: 768px) {
   .acerca-skills-content {
     grid-template-columns: repeat(3, 30%);
+  }
+
+  /*Trabajos*/
+  .portafolio-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .portafolio-content .section-title {
+    grid-column: span 2;
+  }
+
+  .portafolio-modal {
+    max-width: 800px;
+    /* flex-direction: row; */
+    grid-template-columns: repeat(2, 48%);
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .portafolio-modal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -322,7 +485,12 @@ p {
     grid-column: span 2;
   }
 
-  /* .acerca-skills-content {
-    grid-template-columns: repeat(2, 30%);
-  } */
+  /*Proyectos*/
+  .portafolio-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .portafolio-content .section-title {
+    grid-column: span 3;
+  }
 }
