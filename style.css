@@ -239,9 +239,16 @@ p {
 }
 
 .modal-cerrar svg {
-  width: 1.75rem;
-  height: 1.75rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
   fill: var(--color-principal);
+  transition: all 0.5s ease-in-out;
+}
+
+.modal-cerrar svg:hover {
+  background-color: var(--color-azul-obscuro);
 }
 
 .modal[id|="trabajo"]:target {
@@ -249,7 +256,67 @@ p {
   pointer-events: auto;
 }
 
+/*Formulario*/
+
+.contacto-form {
+  padding: 1rem;
+}
+.contacto-form > * {
+  border-radius: 0.25rem;
+  display: block;
+  padding: 0.5rem;
+  margin: 0.25rem;
+  width: 100%;
+  font-family: var(--fuente);
+  font-size: 0.85rem;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+  border: 0;
+  padding-left: 0.25rem;
+  border: thin solid var(--color-gris-icon);
+}
+
+.contacto-form :last-child {
+  border: 0;
+  margin-top: 1rem;
+}
+
+.contacto-form textarea {
+  resize: none;
+}
+
+.contacto-form *::placeholder {
+  color: var(--color-azul-obscuro);
+}
+
+.contacto-form-response {
+  border-radius: 0.25rem;
+  padding: 1rem;
+  width: 400px;
+  text-align: center;
+  background-color: var(--color-titulo);
+}
+
+.contacto-form-response svg {
+  margin-top: 2rem;
+  width: 4rem;
+  height: 4rem;
+  fill: var(--color-principal);
+}
+
+.modal#gracias:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /**** Utilidades ****/
+
+.box-shadow-1 {
+  box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.25);
+}
+
 .btn {
   display: block;
   border-radius: 1rem;
@@ -261,6 +328,24 @@ p {
   color: var(--color-titulo);
   background-color: var(--color-principal);
   border: 1px solid var(--color-principal);
+}
+
+.btn-form {
+  display: block;
+  border-radius: 1rem;
+  width: 175px;
+  padding: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: var(--color-titulo);
+  background-color: var(--color-principal);
+  border: 1px solid var(--color-principal);
+  transition: opacity 0.5s ease-in-out;
+}
+
+.btn-form:hover {
+  cursor: pointer;
+  opacity: 0.85;
 }
 
 .container {
@@ -435,6 +520,74 @@ p {
   color: var(--color-principal);
 }
 
+/* Contacto */
+.contacto-card {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.contacto-card > * {
+  padding: 0.25rem;
+}
+
+.contacto-card p {
+  margin: 0;
+}
+
+.contacto-card svg {
+  width: 2rem;
+  fill: var(--color-principal);
+}
+
+.contacto-card a {
+  color: var(--color-principal);
+}
+
+.color-none svg {
+  fill: none;
+}
+
+/*Footer*/
+
+.footer {
+  background-color: var(--color-footer);
+  padding: 1rem;
+  margin-bottom: var(--header-height);
+}
+
+.footer-content {
+  color: var(--color-titulo);
+  color: var(--color-azul-obscuro);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content svg {
+  width: 1.17rem;
+  height: 1.17rem;
+  fill: var(--color-azul-obscuro);
+  transition: all 0.5s ease-in-out;
+}
+
+.footer-content a {
+  padding: 0 0.35rem;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  opacity: 1;
+}
+
+.footer-content a:hover svg {
+  fill: #fff;
+}
+
+.footer-content a svg {
+  width: 2rem;
+  height: 2rem;
+}
+
 @media screen and (min-width: 768px) {
   .acerca-skills-content {
     grid-template-columns: repeat(3, 30%);
@@ -452,7 +605,6 @@ p {
 
   .portafolio-modal {
     max-width: 800px;
-    /* flex-direction: row; */
     grid-template-columns: repeat(2, 48%);
     justify-content: space-between;
     align-items: center;
@@ -462,6 +614,17 @@ p {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  /*Contacto*/
+  .contacto {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+  }
+
+  .contacto h4 {
+    grid-column: span 2;
   }
 }
 
@@ -492,5 +655,20 @@ p {
 
   .portafolio-content .section-title {
     grid-column: span 3;
+  }
+  /*Contacto*/
+  .contacto-form {
+    display: grid;
+    grid-template-columns: repeat(2, 48%);
+    justify-content: space-evenly;
+  }
+
+  .contacto-form textarea,
+  .contacto-form input[type="submit"] {
+    grid-column: span 2;
+  }
+
+  .footer {
+    margin-bottom: 0;
   }
 }
